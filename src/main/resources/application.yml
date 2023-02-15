@@ -1,13 +1,14 @@
 spring:
   cloud:
     stream:
-      kafka:
-        binder:
-          brokers: localhost:9092
+#      kafka:
+#        binder:
+#          brokers: localhost:9092
       bindings:
         weatherEventConsumer-in-0:
           destination: sync-weather
           group: weather-archive
         weatherEventConsumer-out-0:
           destination: sync-weather
-
+#      default-binder: rabbit
+      default-binder: ${spring.profiles.active:kafka}
